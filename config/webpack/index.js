@@ -1,35 +1,33 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-module.exports = {
-    entry: './app/index.js',
-    output: {
-        path: __dirname + '../../../build',
-        publicPath: '/',
-        filename: 'bundle.js',
+const env = process.env.NODE_ENV || 'development';
+const envConfig = require(`./${env}.js`);
+
+module.exports = Object.assign(
+    {
+        mode: env,
+        entry: {
+            index: ['babel-polyfill', './app/index.jsx'],
+        },
+        output: {
+            path: __dirname + '../../../build',
+            publicPath: '/',
+            filename: '[name].bundle.js',
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.(js|jsx)$/,
+                    exclude: /node_modules/,
+                    use: ['babel-loader', 'eslint-loader'],
+                },
+                {
+                    test: /\.scss$/,
+                    use: ['style-loader', 'css-loader', 'sass-loader'],
+                },
+            ],
+        },
+        resolve: {
+            extensions: ['*', '.js', '.jsx'],
+        },
     },
-    devServer: {
-        contentBase: './build',
-        port: 3000,
-        hot: true,
-    },
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: ['babel-loader', 'eslint-loader'],
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader',
-                ],
-            },
-        ],
-    },
-    plugins: [
-        new HtmlWebpackPlugin({ template: path.resolve('./index.html') }),
-    ],
-};
+    envConfig
+);

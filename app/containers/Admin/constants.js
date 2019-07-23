@@ -1,0 +1,1 @@
+export const DEFAULT_ACTION = 'ADMIN/DEFAULT_ACTION';

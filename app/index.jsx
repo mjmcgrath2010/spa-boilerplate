@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import Application from './containers/Application/index.jsx';
 import './scss/app.scss';
 
-class App extends React.Component {
-    render () {
-        return <h1>Hello World from React What u talking bout</h1>;
-    }
+if (module.hot) {
+    module.hot.accept();
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Application />, document.getElementById('app'));
