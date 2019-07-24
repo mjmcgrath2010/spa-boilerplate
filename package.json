@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "jest && codecov",
+        "test": "jest && codecov -t process.env.CODECOV_TOKEN",
         "build": "webpack --config ./config/webpack/index.js",
         "start": "yarn build && node ./server/index.js",
         "dev": "build && nodemon ./server/index.js"
