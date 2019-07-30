@@ -54,7 +54,7 @@
         "node-sass": "^4.12.0",
         "nodemon": "^1.19.1",
         "prettier": "^1.18.2",
-        "react-hot-loader": "^4.12.9",
+        "react-hot-loader": "^4.12.10",
         "sass-loader": "^7.1.0",
         "style-loader": "^0.23.1",
         "webpack": "^4.38.0",
